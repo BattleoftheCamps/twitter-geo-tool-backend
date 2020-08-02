@@ -13,17 +13,17 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-# Assign Address
-addressINPUT = 'San Francisco'
+# # Assign Address
+# addressINPUT = 'San Francisco'
 
-# Translate Address to Longitude and Latitude Coordinates
-locator = Nominatim(user_agent='myGeocoder')
-location = locator.geocode(addressINPUT)
-longitudeINPUT = location.longitude
-latitudeINPUT = location.latitude
-#Test: print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
+# # Translate Address to Longitude and Latitude Coordinates
+# locator = Nominatim(user_agent='myGeocoder')
+# location = locator.geocode(addressINPUT)
+# longitudeINPUT = location.longitude
+# latitudeINPUT = location.latitude
+# #Test: print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
 
-stringINPUT = '{},{},100mi'.format(latitudeINPUT, longitudeINPUT)
+# stringINPUT = '{},{},100mi'.format(latitudeINPUT, longitudeINPUT)
 # location_selected = stringINPUT  # latitude,longitude,radius
 
 
@@ -50,7 +50,7 @@ def get_politics(location_selected):
 
 
 # Fetching Food Trends
-def get_food():
+def get_food(location_selected):
     # Define the search term and the date_since date as variables
     query = "food -filter:retweets"  # removes retweets
     date_since = '2020/07/01'
@@ -64,13 +64,14 @@ def get_food():
                            ).items(10)
 
     # Print tweets and attached attributes
+    tweet_obj = []
     for tweet in tweets:
         users_attributes = [tweet.user.screen_name, tweet.user.location, tweet.text]
-        print(users_attributes)
-
+        tweet_obj.append(users_attributes)
+    return(tweet_obj)
 
 # Fetching Pop Culture Trends
-def get_pop_culture():
+def get_pop_culture(location_selected):
     # Define the search term and the date_since date as variables
     query = "tiktok+youtube -filter:retweets"  # removes retweets
     date_since = '2020/07/01'
@@ -84,12 +85,14 @@ def get_pop_culture():
                            ).items(10)
 
     # Print tweets and attached attributes
+    tweet_obj = []
     for tweet in tweets:
         users_attributes = [tweet.user.screen_name, tweet.user.location, tweet.text]
-        print(users_attributes)
+        tweet_obj.append(users_attributes)
+    return(tweet_obj)
 
 # Fetching Technology Trends
-def get_technology():
+def get_technology(location_selected):
     # Define the search term and the date_since date as variables
     query = "tech -filter:retweets"  # removes retweets
     date_since = '2020/07/01'
@@ -103,12 +106,14 @@ def get_technology():
                            ).items(10)
 
     # Print tweets and attached attributes
+    tweet_obj = []
     for tweet in tweets:
         users_attributes = [tweet.user.screen_name, tweet.user.location, tweet.text]
-        print(users_attributes)
+        tweet_obj.append(users_attributes)
+    return(tweet_obj)
 
 # Fetching Latest Tweets
-def get_latest():
+def get_latest(location_selected):
     # Define the search term and the date_since date as variables
     query = "-filter:retweets"  # removes retweets
     date_since = '2020/07/01'
@@ -121,7 +126,9 @@ def get_latest():
                            lang="en",
                            ).items(10)
 
-    # Print tweets and attached attributes
+     # Print tweets and attached attributes
+    tweet_obj = []
     for tweet in tweets:
         users_attributes = [tweet.user.screen_name, tweet.user.location, tweet.text]
-        print(users_attributes)
+        tweet_obj.append(users_attributes)
+    return(tweet_obj)

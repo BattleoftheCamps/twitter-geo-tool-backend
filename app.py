@@ -38,7 +38,6 @@ def getTweets():
     global location_selected
     if request.method == 'GET':
         topic = request.args.get('topic')
-        print (topic)
         # map topic request params to function in tools.py
         options = {
             "politics" : get_politics,
