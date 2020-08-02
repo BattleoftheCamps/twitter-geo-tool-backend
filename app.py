@@ -16,8 +16,10 @@ def storeCoordinates():
             "status" : 200,
         }
         return jsonify(obj)
-    else:
+    if request.method == 'GET':
         obj = {
             "latitude" : latitude,
         }
         return jsonify(obj)
+    else:
+        return 'NOT IMPLEMENTED', 501
