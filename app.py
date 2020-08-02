@@ -10,15 +10,19 @@ def storeCoordinates():
     global latitude
     global longitude
     if request.method == 'POST':
-        latitude = 4
-        longitude = 6
-        obj = {
-            "status" : 200,
-        }
-        return jsonify(obj)
+        # request must be a json with format:
+        # {
+        #     "latitude" : [value],
+        #     "longitude" : [value]
+        # }
+        coordinates = request.json
+        latitude = coordinates["latitude"]
+        longitude = coordinates["longitude"]
+        return 'OK', 200
     if request.method == 'GET':
         obj = {
             "latitude" : latitude,
+            "longitude" : longitude,
         }
         return jsonify(obj)
     else:
