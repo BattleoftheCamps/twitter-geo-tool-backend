@@ -24,11 +24,11 @@ latitudeINPUT = location.latitude
 #Test: print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
 
 stringINPUT = '{},{},100mi'.format(latitudeINPUT, longitudeINPUT)
-location_selected = stringINPUT  # latitude,longitude,radius
+# location_selected = stringINPUT  # latitude,longitude,radius
 
 
 # Fetching Government & Politics Trends
-def get_politics():
+def get_politics(location_selected):
     # Define the search term and the date_since date as variables
     query = "election -filter:retweets"  # removes retweets
     date_since = '2020/01/01'
@@ -42,9 +42,11 @@ def get_politics():
                            ).items(10)
 
     # Print tweets and attached attributes
+    tweet_obj = []
     for tweet in tweets:
         users_attributes = [tweet.user.screen_name, tweet.user.location, tweet.text]
-        print(users_attributes)
+        tweet_obj.append(users_attributes)
+    return(tweet_obj)
 
 
 # Fetching Food Trends
