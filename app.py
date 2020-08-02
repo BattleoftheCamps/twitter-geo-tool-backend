@@ -1,13 +1,17 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS, cross_origin
 from tools import get_politics, get_food, get_pop_culture, get_technology, get_latest
 import json
 app = Flask(__name__, template_folder='../Front-End')
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 latitude = 0
 longitude = 0
 location_selected = ""
 
 @app.route("/location/coordinates", methods=['POST'])
+@cross_origin()
 def storeCoordinates():
     global latitude
     global longitude
@@ -25,6 +29,7 @@ def storeCoordinates():
 
 
 @app.route("/topic", methods=['GET'])
+@cross_origin()
 def getTweets():
     global latitude
     global longitude
