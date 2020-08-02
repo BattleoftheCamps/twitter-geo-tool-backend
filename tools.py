@@ -13,20 +13,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-# # Assign Address
-# addressINPUT = 'San Francisco'
-
-# # Translate Address to Longitude and Latitude Coordinates
-# locator = Nominatim(user_agent='myGeocoder')
-# location = locator.geocode(addressINPUT)
-# longitudeINPUT = location.longitude
-# latitudeINPUT = location.latitude
-# #Test: print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
-
-# stringINPUT = '{},{},100mi'.format(latitudeINPUT, longitudeINPUT)
-# location_selected = stringINPUT  # latitude,longitude,radius
-
-
 # Fetching Government & Politics Trends
 def get_politics(location_selected):
     # Define the search term and the date_since date as variables
