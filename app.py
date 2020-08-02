@@ -12,5 +12,5 @@ app = Flask(__name__, template_folder='../Front-End')
 def output():
 	return "Hello World!"
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
