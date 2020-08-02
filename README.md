@@ -1,5 +1,5 @@
 # Twitter Geo Tool Backend  
-REST API written in Python and deployed to Heroku. Returns tweets in and around a given location (specified by coordinates) sorted by topic using the Twitter API.
+REST API written in Python using Flask and deployed to Heroku. Returns tweets in and around a given location (specified by coordinates) sorted by topic using the Twitter API.
 
 ## API paths
 
