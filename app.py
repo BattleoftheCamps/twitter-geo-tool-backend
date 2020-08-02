@@ -37,6 +37,7 @@ def getTweets():
     global longitude
     global location_selected
     if request.method == 'GET':
+        # request must include a query parameter with a value of "politics", "food", "pop culture", "technology", or "latest"
         topic = request.args.get('topic')
         # map topic request params to function in tools.py
         options = {
