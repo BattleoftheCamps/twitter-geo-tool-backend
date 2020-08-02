@@ -1,16 +1,23 @@
-# import os
 from flask import Flask, jsonify, request, render_template
-# template_dir = os.path.abspath('./src')
+import json
 app = Flask(__name__, template_folder='../Front-End')
 
-# @app.route('/')
-# def render():
-# 	# serve index template
-# 	return render_template('index.html')
+latitude = 0
+longitude = 0
 
-@app.route("/helloworld")
-def output():
-	return "Hello World!"
-
-# if __name__ == "__main__":
-#     app.run()
+@app.route("/location/coordinates", methods=['GET', 'POST'])
+def storeCoordinates():
+    global latitude
+    global longitude
+    if request.method == 'POST':
+        latitude = 4
+        longitude = 6
+        obj = {
+            "status" : 200,
+        }
+        return jsonify(obj)
+    else:
+        obj = {
+            "latitude" : latitude,
+        }
+        return jsonify(obj)
