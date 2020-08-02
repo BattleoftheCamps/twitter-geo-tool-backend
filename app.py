@@ -7,7 +7,7 @@ latitude = 0
 longitude = 0
 location_selected = ""
 
-@app.route("/location/coordinates", methods=['GET', 'POST'])
+@app.route("/location/coordinates", methods=['POST'])
 def storeCoordinates():
     global latitude
     global longitude
@@ -20,13 +20,6 @@ def storeCoordinates():
         longitude = coordinates["longitude"]
         location_selected = '{},{},100mi'.format(latitude, longitude)
         return 'OK', 200
-    if request.method == 'GET':
-        obj = {
-            "latitude" : latitude,
-            "longitude" : longitude,
-            "location_selected" : location_selected
-        }
-        return jsonify(obj)
     else:
         return 'NOT IMPLEMENTED', 501
 
@@ -37,6 +30,8 @@ def getTweets():
     global longitude
     global location_selected
     if request.method == 'GET':
+        if location_selected == "":
+            return 'NO LOCATION SELECTED', 400
         # request must include a query parameter with a value of "politics", "food", "pop culture", "technology", or "latest"
         topic = request.args.get('topic')
         # map topic request params to function in tools.py
