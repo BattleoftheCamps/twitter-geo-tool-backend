@@ -2,7 +2,11 @@
 import tweepy
 from geopy import Nominatim
 
-
+# Create Credential Keys
+consumer_key = ${{ secrets.API_KEY }}
+consumer_secret = ${{ secrets.API_SECRET_KEY }}
+access_token = ${{ secrets.ACCESS_TOKEN }}
+access_token_secret = ${{ secrets.ACCESS_TOKEN_SECRET }}
 
 # Set Up Configuration
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
